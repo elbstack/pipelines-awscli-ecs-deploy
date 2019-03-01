@@ -2,11 +2,8 @@ FROM atlassian/pipelines-awscli
 MAINTAINER elbstack
 
 RUN apk --update --no-cache add \
-    python \
     py-pip \
-    && pip install --no-cache-dir ecs-deploy \
-    && apk del py-pip \
-    && rm -rf /var/cache/apk/* /root/.cache/pip/*
+    && pip install ecs-deploy botocore==1.12.105
 
 WORKDIR /root
 VOLUME /root/.aws
